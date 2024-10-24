@@ -6,11 +6,26 @@ def ecart (j1:int,j2:int,m1:int,m2:int,an1:int,an2:int):
     """
 
     age:int
+    exchange_day:int
+    exchange_month:int
+    exchange_year:int
+    if (an2<an1) or (an1==an2 and m2<m1) or (an1==an2 and m1==m2 and j2<j1):
+        exchange_day=j1
+        j1=j2
+        j2=exchange_day
+        exchange_month=m1
+        m1=m2
+        m2=exchange_month
+        exchange_year=an1
+        an1=an2
+        an2=exchange_year
+
     age = an2 - an1
     if((m2 < m1) or ((m2 == m1) and (j2 < j1))):
         age = age - 1
 
     return age
+
 def vérifier_date(jour:int,mois:int,annee:int):
     est_biss:bool
     mois_ok:bool
