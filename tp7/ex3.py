@@ -10,7 +10,7 @@ def print_menu():
         print(key, '- -', menu_options[key])
 
 def compte_voyelles(chaine):
-    voyelles = {'a', 'e', 'i', 'o', 'u', 'y'}
+    voyelles = {'a', 'e', 'i', 'o', 'u', 'y','é','è','ê','à','ù','â','î','ô','û'}
     nb_voyelles = 0
     for lettre in chaine:
         if lettre in voyelles:
@@ -36,8 +36,14 @@ if __name__ == "__main__":
                 nom = input("Entrez un nom : ")
                 noms.append(nom)
                 continuer = input("Encore un nom ? (o/n) : ")
-                if continuer.lower() != 'o':
+                if continuer.lower() == 'o':
+                    continue
+                if continuer.lower() == 'n':
                     break
+                while continuer.lower() != 'o' or 'n':
+                    continuer = input("Encore un nom ? (o/n) : ")
+                
+
 
         elif option == '2':
             # Afficher le nombre de voyelles par nom
