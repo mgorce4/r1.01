@@ -49,5 +49,5 @@ if __name__ == "__main__":
     #affichage de la matrice
     for i in range(len(tab4)):
         for j in range(len(tab4[i])):
-            print(tab4[i][j], end=" ")
-        print()
+            print(f"| {tab4[i][j]:^3} ", end="")
+        print("|")
