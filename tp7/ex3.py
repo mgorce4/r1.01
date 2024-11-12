@@ -25,6 +25,8 @@ def est_palindrome(mot):
 
 if __name__ == "__main__":
     noms = []
+    menu:bool
+    menu = True
 
     while True:
         print_menu()
