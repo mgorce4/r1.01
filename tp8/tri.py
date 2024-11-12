@@ -44,6 +44,10 @@ def tri_par_insertion(table: list[int]) -> list:
     return table
 
 def recherche_dichotomique(table: list[int], x: int) -> int:
+    if table != sorted(table):
+        print("Le tableau n'est pas trié.")
+        return -1
+
     n = len(table)
     debut = 0
     fin = n-1
