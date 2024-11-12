@@ -93,6 +93,9 @@ if __name__ == '__main__':
         if option == '1':
             # Option 1 : Crée un nouveau tableau
             n = int(input("Entrez le nombre de cases: "))
+            if n < 0 :
+                print("Entrez un nombre supérieur à 0")
+                n = int(input("Entrez le nombre de cases: "))
             table = create_table(n)
         elif option == '2':
             # Option 2 : Affiche le tableau actuel
