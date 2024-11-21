@@ -57,7 +57,6 @@ def rechercher_livre(table: list[livre]):
     entrées: table(list[livre]) : tableau de livres
     sorties: id(int) : position du livre dans le tableau
     """
-    id:int # Déclaration de la variable id
     titre = input("Entrez le titre du livre à rechercher: ") # Demande le titre du livre à rechercher
     for id in range(len(table)): # Parcours le tableau
         if table[id].titre == titre: # Si le titre du livre est trouvé on affiche le livre
@@ -66,9 +65,8 @@ def rechercher_livre(table: list[livre]):
             print("Année de parution: ", table[id].anneeParution)
             print("Nombre de pages: ", table[id].nbPages)
             print("-------------------------")
-            print("Le livre se trouve à la place ", id+1 )
-        else:
-            print("Le livre n'est pas dans la bibliothèque") # Sinon on affiche un message d'erreur
+            return id
+    return -1  # Si le livre n'est pas trouvé, retourne -1
             
 
 if __name__ == '__main__':
@@ -91,8 +89,11 @@ if __name__ == '__main__':
         elif option == '2':
             n=ajouter_livre(table,n) 
         elif option == '3':
-            rechercher_livre(table)
-            
+            place=rechercher_livre(table)
+            if place == -1:
+                print("Le livre n'est pas dans la bibliothèque")
+            else:
+                print("Le livre se trouve à la place ", place+1 )
             
         elif option == '4':
             break
