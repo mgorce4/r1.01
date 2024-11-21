@@ -65,7 +65,8 @@ def rechercher_livre(table: list[livre]):
             print("Auteur: ", table[id].nomAuteur)
             print("Année de parution: ", table[id].anneeParution)
             print("Nombre de pages: ", table[id].nbPages)
-            return id
+            print("-------------------------")
+            print("Le livre se trouve à la place ", id+1 )
         else:
             print("Le livre n'est pas dans la bibliothèque") # Sinon on affiche un message d'erreur
             
@@ -90,8 +91,8 @@ if __name__ == '__main__':
         elif option == '2':
             n=ajouter_livre(table,n) 
         elif option == '3':
-            place=rechercher_livre(table)
-            print("Le livre se trouve à la place ", place+1 )
+            rechercher_livre(table)
+            
             
         elif option == '4':
             break
