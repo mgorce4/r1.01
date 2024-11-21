@@ -22,7 +22,7 @@ def print_menu():
 
 def afficher_livres(table: list[livre],n:int):
     """
-    fonction permettant d'afficher les livres de la bibliothèque de livres renvoie un message d'eereur si le tableau est vide
+    procédure permettant d'afficher les livres de la bibliothèque de livres renvoie un message d'eereur si le tableau est vide
     entrées: table(list[livre]) : tableau de livres, n(int) : nombre de livres dans la bibliothèque
     sorties: aucune
     """
