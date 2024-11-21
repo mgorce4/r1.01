@@ -66,6 +66,8 @@ def rechercher_livre(table: list[livre]):
             print("Année de parution: ", table[id].anneeParution)
             print("Nombre de pages: ", table[id].nbPages)
             return id
+        else:
+            print("Le livre n'est pas dans la bibliothèque") # Sinon on affiche un message d'erreur
             
 
 if __name__ == '__main__':
