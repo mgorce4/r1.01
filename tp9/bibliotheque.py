@@ -12,35 +12,55 @@ menu_options = {
 }
 
 def print_menu():
+    """
+    Affiche le menu des options
+    entrées: aucune
+    sorties: aucune
+    """
     for key in menu_options.keys():
         print(key, '-- ', menu_options[key])
 
 def afficher_livres(table: list[livre],n:int):
-    if n == 0:
+    """
+    fonction permettant d'afficher les livres de la bibliothèque de livres renvoie un message d'eereur si le tableau est vide
+    entrées: table(list[livre]) : tableau de livres, n(int) : nombre de livres dans la bibliothèque
+    sorties: aucune
+    """
+    if n == 0: # Si le tableau est vide on affiche un message
         print("La bibliothèque est vide")
         return
-    for livre in table:
+    for livre in table: # Parcours le tableau et affiche les livres
         print("Titre: ", livre.titre)
         print("Auteur: ", livre.nomAuteur)
         print("Année de parution: ", livre.anneeParution)
         print("Nombre de pages: ", livre.nbPages)
-        print("")  # Ligne vide pour séparer les livres
+        print("-------------------------")  # Ligne vide pour séparer les livres
 
 def ajouter_livre(table: list[livre], n:int):
-    nouveau_livre = livre()
-    nouveau_livre.titre = input("Entrez le titre du livre: ")
+    """
+    fonction permettant d'ajouter un livre à la bibliothèque
+    entrées: table(list[livre]) : tableau de livres, n(int) : nombre de livres dans la bibliothèque
+    sorties: n(int) : nombre de livres dans la bibliothèque indenté de 1
+    """
+    nouveau_livre = livre() # Création d'un nouveau livre
+    nouveau_livre.titre = input("Entrez le titre du livre: ") 
     nouveau_livre.nomAuteur = input("Entrez le nom de l'auteur: ")
     nouveau_livre.anneeParution = int(input("Entrez l'année de parution: "))
     nouveau_livre.nbPages = int(input("Entrez le nombre de pages: "))
-    table.append(nouveau_livre)
-    n+=1
+    table.append(nouveau_livre) # Ajout du livre au tableau
+    n+=1 # Incrémentation du nombre de livres
     return n
 
 def rechercher_livre(table: list[livre]):
-    id:int
-    titre = input("Entrez le titre du livre à rechercher: ")
-    for id in range(len(table)):
-        if table[id].titre == titre:
+    """
+    fonction permettant de rechercher un livre dans la bibliothèque par son titre
+    entrées: table(list[livre]) : tableau de livres
+    sorties: id(int) : position du livre dans le tableau
+    """
+    id:int # Déclaration de la variable id
+    titre = input("Entrez le titre du livre à rechercher: ") # Demande le titre du livre à rechercher
+    for id in range(len(table)): # Parcours le tableau
+        if table[id].titre == titre: # Si le titre du livre est trouvé on affiche le livre
             print("Titre: ", table[id].titre)
             print("Auteur: ", table[id].nomAuteur)
             print("Année de parution: ", table[id].anneeParution)
@@ -53,7 +73,7 @@ if __name__ == '__main__':
     n:int
     n=0
     place: int
-    option = str      # Déclaration de la variable pour l'option choisie
+    option = str # Déclaration de la variable pour l'option choisie
 
     while True:
         print_menu()  # Affiche le menu
@@ -66,7 +86,7 @@ if __name__ == '__main__':
         if option == '1':
             afficher_livres(table,n)
         elif option == '2':
-            n=ajouter_livre(table,n)
+            n=ajouter_livre(table,n) 
         elif option == '3':
             place=rechercher_livre(table)
             print("Le livre se trouve à la place ", place+1 )
