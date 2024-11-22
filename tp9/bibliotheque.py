@@ -57,6 +57,9 @@ def rechercher_livre(table: list[livre]):
     entrées: table(list[livre]) : tableau de livres
     sorties: id(int) : position du livre dans le tableau
     """
+    if len(table) == 0: # Si le tableau est vide on affiche un message
+        print("La bibliothèque est vide")
+        return -2
     titre = input("Entrez le titre du livre à rechercher: ") # Demande le titre du livre à rechercher
     for id in range(len(table)): # Parcours le tableau
         if table[id].titre == titre: # Si le titre du livre est trouvé on affiche le livre
@@ -92,6 +95,8 @@ if __name__ == '__main__':
             place=rechercher_livre(table)
             if place == -1:
                 print("Le livre n'est pas dans la bibliothèque")
+            elif place == -2:
+                pass
             else:
                 print("Le livre se trouve à la place ", place+1 )
             
