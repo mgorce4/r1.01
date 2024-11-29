@@ -1,4 +1,3 @@
-import os
 
 class auteur:
     nom: str
@@ -13,16 +12,6 @@ class livre:
     anneeParution: int
     nbPages: int
 
-def clear_terminal():
-    """
-    Procédure qu permet de determiner le système d'exploitation et d'effectuer la commande approprie pour effacer le terminal
-    entrée: rien*
-    sortie: rien
-    """
-    if os.name=='nt':
-        os.system("cls")
-    else:
-        os.system("clear")
 
 menu_options = {
     1 : "Afficher l'ensemble des livres de la bibliothèque",
