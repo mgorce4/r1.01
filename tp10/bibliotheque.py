@@ -19,7 +19,8 @@ menu_options = {
     3 : "Rechercher un livre (par le titre)",
     4 : "afficher les livres d'un auteur",
     5 : "ajouter un auteur",
-    6 : "Quitter"
+    6 : "Afficher tous les auteurs", 
+    7 : "Quitter"
 }
 
 def print_menu():
@@ -199,4 +200,6 @@ if __name__ == '__main__':
             n_auteur=ajout_auteur(tableau_auteurs,n_auteur)
 
         elif option == '6':
+            tousLesAuteurs(tableau_auteurs)
+        elif option == '7':
             break
