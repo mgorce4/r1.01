@@ -4,7 +4,7 @@ class auteur:
     prenom: str
     nationalite: str
     dateNaissance: int
-    dateDeces: int
+    dateDecesFacultative: str
 
 class livre:
     titre: str
@@ -110,7 +110,7 @@ def ajout_auteur (tableau_auteurs: list[auteur], n:int):
     nouvel_auteur.prenom = input("Entrez le prénom de l'auteur: ")
     nouvel_auteur.nationalite = input("Entrez la nationalité de l'auteur: ")
     nouvel_auteur.dateNaissance = int(input("Entrez l'annee de naissance de l'auteur: "))
-    nouvel_auteur.dateDeces = int(input("Entrez l'annee de décès de l'auteur: "))
+    nouvel_auteur.dateDecesFacultative = str(input("Entrez l'annee de décès de l'auteur: "))
     tableau_auteurs.append(nouvel_auteur) # Ajout de l'auteur au tableau
     n+=1 # Incrémentation du nombre d'auteurs
     return n
@@ -142,6 +142,23 @@ def livres_d_un_auteur(table: list[livre], tableau_auteurs: list[auteur]):
             print(f"Année de parution: {livre.anneeParution}")
             print(f"Nombre de pages: {livre.nbPages}")
             print("-------------------------")
+
+def tousLesAuteurs(tableau_auteurs:list[auteur]):
+    """
+    procédure permettant d'afficher tous les auteurs
+    entrées: tableau_auteurs(list[auteur]) : tableau d'auteurs
+    sorties: aucune
+    """
+    if len(tableau_auteurs) == 0: # Si le tableau est vide on affiche un message
+        print("Aucun auteur disponible")
+        return
+    for auteur in tableau_auteurs: # Parcours le tableau et affiche les auteurs
+        print("Nom: ", auteur.nom)
+        print("Prénom: ", auteur.prenom)
+        print("Nationalité: ", auteur.nationalite)
+        print("Année de naissance: ", auteur.dateNaissance)
+        print("Année de décès: ", auteur.dateDecesFacultative)
+        print("-------------------------")  # Ligne vide pour séparer les auteurs    
 
 if __name__ == '__main__':
     table: list[livre] = []  # Déclaration du tableau
