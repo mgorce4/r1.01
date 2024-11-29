@@ -111,7 +111,7 @@ def ajout_auteur (tableau_auteurs: list[auteur], n:int):
     nouvel_auteur.prenom = input("Entrez le prénom de l'auteur: ")
     nouvel_auteur.nationalite = input("Entrez la nationalité de l'auteur: ")
     nouvel_auteur.dateNaissance = int(input("Entrez l'annee de naissance de l'auteur: "))
-    nouvel_auteur.dateDecesFacultative = str(input("Entrez l'annee de décès de l'auteur: "))
+    nouvel_auteur.dateDecesFacultative = str(input("Entrez l'annee de décès de l'auteur(facultatif): ")) # L'année de décès est facultative
     tableau_auteurs.append(nouvel_auteur) # Ajout de l'auteur au tableau
     n+=1 # Incrémentation du nombre d'auteurs
     return n
@@ -162,8 +162,8 @@ def tousLesAuteurs(tableau_auteurs:list[auteur]):
         print("-------------------------")  # Ligne vide pour séparer les auteurs    
 
 if __name__ == '__main__':
-    table: list[livre] = []  # Déclaration du tableau
-    tableau_auteurs: list[auteur] = []
+    table: list[livre] = []  # Déclaration du tableau de livres
+    tableau_auteurs: list[auteur] = [] # Déclaration du tableau d'auteurs
     n:int
     n_auteur:int
     n_auteur=0
