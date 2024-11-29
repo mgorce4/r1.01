@@ -129,9 +129,9 @@ def livres_d_un_auteur(table: list[livre], tableau_auteurs: list[auteur]):
         return
     print("Liste des auteurs disponibles:")
     for idx, auteur in enumerate(tableau_auteurs):
-        print(f"{idx + 1}. {auteur.nom} {auteur.prenom}")
-    choix_auteur = int(input("Choisissez un auteur par son numéro: ")) - 1
-    if choix_auteur < 0 or choix_auteur >= len(tableau_auteurs):
+        print(f"{idx + 1}. {auteur.nom} {auteur.prenom}") #on imprime tout les auteurs avec leurs place dans le tableau +1
+    choix_auteur = int(input("Choisissez un auteur par son numéro: ")) - 1 #on retire 1 à la réponse pour permettre d'avoir le bon identifiant
+    if choix_auteur < 0 or choix_auteur >= len(tableau_auteurs): #gestion des erreurs
         print("Choix invalide.")
         return
     auteur = tableau_auteurs[choix_auteur]
