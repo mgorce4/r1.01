@@ -31,7 +31,8 @@ menu_options = {
     4 : "Afficher les livres d'un auteur",
     5 : "Ajouter un auteur",
     6 : "Afficher tous les auteurs", 
-    7 : "Quitter"
+    7 : "exporter les données au format texte",
+    8 : "Quitter"
 }
 
 def print_menu():
@@ -114,9 +115,8 @@ def livres_d_un_auteur():
     for idx, auteur in enumerate(tableau_auteurs):
         print(f"{idx + 1}. {auteur.nom} {auteur.prenom}")
     choix_auteur = int(input("Choisissez un auteur par son numéro: ")) - 1
-    if choix_auteur < 0 or choix_auteur >= len(tableau_auteurs):
+    while choix_auteur < 0 or choix_auteur >= len(tableau_auteurs):
         print("Choix invalide.")
-        return
     auteur = tableau_auteurs[choix_auteur]
     print(f"Livres de {auteur.nom} {auteur.prenom}:")
     for livre in table:
@@ -138,6 +138,19 @@ def tousLesAuteurs():
         print("Année de naissance: ", auteur.dateNaissance)
         print("Année de décès: ", auteur.dateDecesFacultative)
         print("-------------------------")
+
+def exporter_au_format_texte():
+    table = read_list('livres.pkl')
+    if len(table) == 0:
+        print("La bibliothèque est vide")
+        return
+    with open('bibliotheque.txt', 'w') as file:
+        for livre in table:
+            file.write(f"Titre: {livre.titre}\n")
+            file.write(f"Auteur: {livre.author.nom} {livre.author.prenom}\n")
+            file.write(f"Année de parution: {livre.anneeParution}\n")
+            file.write(f"Nombre de pages: {livre.nbPages}\n")
+            file.write("-------------------------\n")
 
 if __name__ == '__main__':
     while True:
@@ -162,4 +175,6 @@ if __name__ == '__main__':
         elif option == '6':
             tousLesAuteurs()
         elif option == '7':
+            exporter_au_format_texte
+        elif option == '8':
             break
