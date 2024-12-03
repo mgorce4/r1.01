@@ -32,7 +32,10 @@ menu_options = {
     5 : "Ajouter un auteur",
     6 : "Afficher tous les auteurs", 
     7 : "exporter les données au format texte",
-    8 : "Quitter"
+    8 : "exporter les données au format CSV",
+    9 : "importer les données depuis un fichier texte",
+    10 : "importer les données depuis un fichier CSV",
+    11 : "Quitter"
 }
 
 def print_menu():
@@ -152,6 +155,49 @@ def exporter_au_format_texte():
             file.write(f"Nombre de pages: {livre.nbPages}\n")
             file.write("-------------------------\n")
 
+def exporter_au_format_csv():
+    table = read_list('livres.pkl')
+    if len(table) == 0:
+        print("La bibliothèque est vide")
+        return
+    with open('bibliotheque.csv', 'w') as file:
+        file.write("Titre,Auteur,Année de parution,Nombre de pages\n")
+        for livre in table:
+            file.write(f"{livre.titre},{livre.author.nom} {livre.author.prenom},{livre.anneeParution},{livre.nbPages}\n")
+
+def importer_du_format_texte():
+    table = []
+    with open('bibliotheque.txt', 'r') as file:
+        lines = file.readlines()
+        for i in range(0, len(lines), 5):
+            livre = livre()
+            livre.titre = lines[i].split(': ')[1].strip()
+            auteur = lines[i + 1].split(': ')[1].strip().split(' ')
+            livre.author.nom = auteur[0]
+            livre.author.prenom = auteur[1]
+            livre.anneeParution = int(lines[i + 2].split(': ')[1].strip())
+            livre.nbPages = int(lines[i + 3].split(': ')[1].strip())
+            table.append(livre)
+    write_list(table, 'livres.pkl')
+
+def importer_du_format_csv():
+    table = []
+    with open('bibliotheque.csv', 'r') as file:
+        lines = file.readlines()
+        for i in range(1, len(lines)):
+            livre = livre()
+            data = lines[i].split(',')
+            livre.titre = data[0]
+            auteur = data[1].split(' ')
+            livre.author.nom = auteur[0]
+            livre.author.prenom = auteur[1]
+            livre.anneeParution = int(data[2])
+            livre.nbPages = int(data[3])
+            table.append(livre)
+    write_list(table, 'livres.pkl')
+
+
+
 if __name__ == '__main__':
     while True:
         print_menu()
@@ -175,6 +221,12 @@ if __name__ == '__main__':
         elif option == '6':
             tousLesAuteurs()
         elif option == '7':
-            exporter_au_format_texte
+            exporter_au_format_texte()
         elif option == '8':
+            exporter_au_format_csv()
+        elif option == '9':
+            importer_du_format_texte()
+        elif option == '10':
+            importer_du_format_csv()
+        elif option == '11':
             break
