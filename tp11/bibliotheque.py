@@ -55,6 +55,7 @@ def afficher_livres():
         print("-------------------------")
 
 def ajouter_livre():
+    table : []
     table = read_list('livres.pkl')
     tableau_auteurs = read_list('auteurs.pkl')
     if len(tableau_auteurs) == 0:
@@ -95,6 +96,7 @@ def rechercher_livre():
     return -1
 
 def ajout_auteur():
+    tableau_auteurs = []
     tableau_auteurs = read_list('auteurs.pkl')
     nouvel_auteur = auteur()
     nouvel_auteur.nom = input("Entrez le nom de l'auteur: ")
