@@ -37,8 +37,8 @@ def afficheLC(li: ListeChainee):
         li (ListeChainee): la liste que l'on veut afficher
     """
     courant = li.tete
+    print("|", end = "")
     while(courant):
-        print("|", end = "")
         print(courant.data , end = "|")
         courant = courant.suivant
     print("")
@@ -185,5 +185,5 @@ if __name__=="__main__" :
     afficheLC(maLC)
     suppEnPos(maLC, 1)
     afficheLC(maLC)
-    print(recherche(maLC, 2))
-    print(recherche(maLC, 4))
+    print(f"la position est : {recherche(maLC, 2)}")
+    print(f"la position est : {recherche(maLC, 4)}")
